@@ -1,6 +1,6 @@
 # handshakejstransport
 
-<img src="https://raw.githubusercontent.com/handshakejs/handshakejstransport/master/handshakejstransport.gif" alt="handshakejstransport" align="right" width="190" />
+<img src="https://raw.githubusercontent.com/scottmotte/handshakejstransport/master/handshakejslogictransport.gif" alt="handshakejstransport" align="right" width="190" />
 
 [![BuildStatus](https://travis-ci.org/handshakejs/handshakejstransport.png?branch=master)](https://travis-ci.org/handshakejs/handshakejstransport)
 
