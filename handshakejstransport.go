@@ -13,11 +13,34 @@ var (
 	SMTP_PASSWORD string
 )
 
-func Setup(smtp_address, smtp_port, smtp_username, smtp_password string) {
-	SMTP_ADDRESS = smtp_address
-	SMTP_PORT = smtp_port
-	SMTP_USERNAME = smtp_username
-	SMTP_PASSWORD = smtp_password
+type Options struct {
+	SmtpAddress  string
+	SmtpPort     string
+	SmtpUsername string
+	SmtpPassword string
+}
+
+func Setup(options *Options) {
+	if options.SmtpAddress == "" {
+		SMTP_ADDRESS = ""
+	} else {
+		SMTP_ADDRESS = options.SmtpAddress
+	}
+	if options.SmtpPort == "" {
+		SMTP_PORT = ""
+	} else {
+		SMTP_PORT = options.SmtpPort
+	}
+	if options.SmtpUsername == "" {
+		SMTP_USERNAME = ""
+	} else {
+		SMTP_USERNAME = options.SmtpUsername
+	}
+	if options.SmtpPassword == "" {
+		SMTP_PASSWORD = ""
+	} else {
+		SMTP_PASSWORD = options.SmtpPassword
+	}
 }
 
 func ViaEmail(to, from, subject, text, html string) {
