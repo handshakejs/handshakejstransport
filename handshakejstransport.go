@@ -20,7 +20,7 @@ type Options struct {
 	SmtpPassword string
 }
 
-func Setup(options *Options) {
+func Setup(options Options) {
 	if options.SmtpAddress == "" {
 		SMTP_ADDRESS = ""
 	} else {

@@ -19,7 +19,7 @@ import (
 )
 
 func main() {
-  options := &handshakejstransport.Options{"smtp.sendgrid.net", "587", "username", "password"}
+  options := handshakejstransport.Options{"smtp.sendgrid.net", "587", "username", "password"}
   handshakejstransport.Setup(options)
 
   handshakejstransport.ViaEmail("person0@mailinator.com", "from@yourapp.com", "Your authcode is 1234", "This is the text of the email", "This is the <b>html</b> of the email")
@@ -31,7 +31,7 @@ func main() {
 Sets up the configuration.
 
 ```go
-options := &handshakejstransport.Options{"smtp.sendgrid.net", "587", "username", "password"}
+options := handshakejstransport.Options{SmtpAddress: "smtp.sendgrid.net", SmtpPort: "587", SmtpUsername: "username", SmtpPassword: "password"}
 handshakejstransport.Setup(options)
 ```
 

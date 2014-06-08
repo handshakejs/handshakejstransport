@@ -6,6 +6,6 @@ import (
 )
 
 func TestSetup(t *testing.T) {
-	options := &handshakejstransport.Options{"smtp.sendgrid.net", "587", "username", "password"}
+	options := handshakejstransport.Options{SmtpAddress: "smtp.sendgrid.net", SmtpPort: "587", SmtpUsername: "username", SmtpPassword: "password"}
 	handshakejstransport.Setup(options)
 }
