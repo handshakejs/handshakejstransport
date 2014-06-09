@@ -2,7 +2,6 @@ package handshakejstransport
 
 import (
 	"github.com/jordan-wright/email"
-	"log"
 	"net/smtp"
 )
 
@@ -12,6 +11,12 @@ var (
 	SMTP_USERNAME string
 	SMTP_PASSWORD string
 )
+
+type LogicError struct {
+	Code    string
+	Field   string
+	Message string
+}
 
 type Options struct {
 	SmtpAddress  string
@@ -43,7 +48,7 @@ func Setup(options Options) {
 	}
 }
 
-func ViaEmail(to, from, subject, text, html string) {
+func ViaEmail(to, from, subject, text, html string) *LogicError {
 	e := email.NewEmail()
 	e.From = from
 	e.To = []string{to}
@@ -53,6 +58,9 @@ func ViaEmail(to, from, subject, text, html string) {
 
 	err := e.Send(SMTP_ADDRESS+":"+SMTP_PORT, smtp.PlainAuth("", SMTP_USERNAME, SMTP_PASSWORD, SMTP_ADDRESS))
 	if err != nil {
-		log.Println(err)
+		logic_error := &LogicError{"unknown", "", err.Error()}
+		return logic_error
 	}
+
+	return nil
 }
