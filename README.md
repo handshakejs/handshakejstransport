@@ -22,7 +22,10 @@ func main() {
   options := handshakejstransport.Options{"smtp.sendgrid.net", "587", "username", "password"}
   handshakejstransport.Setup(options)
 
-  handshakejstransport.ViaEmail("person0@mailinator.com", "from@yourapp.com", "Your authcode is 1234", "This is the text of the email", "This is the <b>html</b> of the email")
+  logic_error := handshakejstransport.ViaEmail("person0@mailinator.com", "from@yourapp.com", "Your authcode is 1234", "This is the text of the email", "This is the <b>html</b> of the email")
+  if logic_err != nil {
+    fmt.Println(logic_error)
+  }
 }
 ```
 
@@ -40,7 +43,10 @@ handshakejstransport.Setup(options)
 Deliver authcode by way of email.
 
 ```go
-handshakejstransport.ViaEmail(to, from, subject, text, html)
+logic_error := handshakejstransport.ViaEmail(to, from, subject, text, html)
+if logic_error != nil {
+  fmt.Println(logic_error)
+}
 ```
 
 ## Installation
